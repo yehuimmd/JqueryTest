@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>jquery练习</title>
+    <style>
+        .box{
+            margin:0 auto;
+            width:400px;
+            height:200px;
+            border:1px solid #ccc;
+        }
+        .menu{
+            list-style:none;
+        }
+        .menu li{
+            width: 30% !important;
+            float: left !important;
+            line-height: 20px !important;
+            height: 20px;
+        }
+        .menu li a{
+            text-decoration:none;
+            color:#000;
+        }
+        .showmore{
+            margin-left:120px;
+            width:150px;
+            height:25px;
+            margin-top:170px;
+            border:1px solid #ccc;
+        }
+        .showmore a{
+            padding-left:30px;
+            text-align:center;
+            text-decoration:none;
+            color:#000;
+            margin:0 auto;
+        }
+        .current{
+            background-color: red;
+        }
+    </style>
+    <script type="text/javascript" src="jquery-3.1.0.min.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+    	var $category=$("ul li:gt(5):not(:last)");//获取ul下的索引值大于5的li元素的集合元素，然后去掉集合元素的最后一个，既获取到从第七条到倒数第二条的元素。
+        $category.hide();//隐藏或娶到的元素
+        var $togglebtn=$("div.showmore>a");
+        $togglebtn.click(function(){
+            if($category.is(":visible")){
+                $category.hide();
+                $(this).find("span")
+                    .css("background","pink")
+                    .text("显示全部品牌");
+
+            $("ul li")
+                .filter(":contains('短袖T恤'),:contains('套头卫衣'),:contains('长袖T恤')").removeClass("current");
+            }else{
+            $category.show();
+            $(this).find("span")
+            .css("background","pink")
+            .text("精简显示品牌");
+
+        $("ul li")
+            .filter(":contains('短袖T恤'),:contains('套头卫衣'),:contains('长袖T恤')").addClass("current");
+        }
+            return false;
+        }
+
+        );
+         
+
+    })
+    </script>
+</head>
+<body>
+<div class="box">
+    <ul class="menu">
+                <li><a href="#">衬衫</a></li>
+                <li><a href="#">短袖衬衫</a></li>
+                <li><a href="#">长袖衬衫</a></li>
+                <li><a href="#">短袖T恤</a></li>
+                <li><a href="#">长袖T恤</a></li>
+                <li><a href="#">卫衣</a></li>
+                <li><a href="#">开衫卫衣</a></li>
+                <li><a href="#">套头卫衣</a></li>
+                <li><a href="#">运动卫衣</a></li>
+                <li><a href="#">童装卫衣</a></li>
+                <li><a href="#">裤子</a></li>
+                <li><a href="#">短裤</a></li>
+                <li><a href="#">休闲裤</a></li>
+                <li><a href="#">牛仔裤</a></li>
+                <li><a href="#">免烫卡其裤</a></li>
+                <li><a href="#">童装卫衣</a></li>
+                <li><a href="#">裤子</a></li>
+                <li><a href="#">短裤</a></li>
+                <li><a href="#">休闲裤</a></li>
+                <li><a href="#">牛仔裤</a></li>
+                <li><a href="#">免烫卡其裤</a></li>
+    </ul>
+    <div class="showmore">
+        <a href="##"><span>显示全部品牌</span></a>
+    </div>
+</div>
+</body>
+</html>
